@@ -49,8 +49,6 @@ function App() {
     let wordLetters = word.split("");
 
     wordLetters = wordLetters.map((l) => l.toLowerCase());
-    console.log(category, word);
-    console.log(wordLetters);
 
     // fill satates
     setPickedWord(word);
@@ -74,7 +72,9 @@ function App() {
   return (
     <div className="App">
       {gameStage === "start" && <StartScreen startGame={startGame} />}
-      {gameStage === "game" && <Game verifyLetter={verifyLetter} />}
+      {gameStage === "game" && (
+        <Game verifyLetter={verifyLetter} dica={pickedCategory} />
+      )}
       {gameStage === "end" && <GameOver retry={retry} />}
     </div>
   );
